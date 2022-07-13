@@ -1,0 +1,12 @@
+jupyterlab==3.1.14
+matplotlib==3.4.3
+numpy==1.21.2
+pandas==1.3.3
+seaborn==0.11.2
+scikit-learn==1.0
+statsmodels==0.13.0
+pytest==6.2.5
+testbook==0.4.2
+mlflow==1.20.2
+parsenvy==3.0.2
+black==21.9b0
