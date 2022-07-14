@@ -1,4 +1,5 @@
 import re
+import pandas as pd
 
 #write
 # span('2008-01-02 00:00', '2011-12-31 23:00')
