@@ -130,9 +130,13 @@ dmypy.json
 
 
 data/*.csv
+data/**/*.csv
 models/*.sav
 mlruns
 models/*
 
 #config file has sensitive data
 .mlflow_uri
+
+#vscode
+.vscode/
