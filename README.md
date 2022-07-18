@@ -1,19 +1,16 @@
-# ds-modeling-pipeline
+# The Green City Solutions Group
 
-Here you find a Skeleton project for building a simple model in a python script or notebook and log the results on MLFlow.
 
-There are two ways to do it: 
-* In Jupyter Notebooks:
-    We train a simple model in the [jupyter notebook](notebooks/EDA-and-modeling.ipynb), where we select only some features and do minimal cleaning. The hyperparameters of feature engineering and modeling will be logged with MLflow
-
-* With Python scripts:
-    The [main script](modeling/train.py) will go through exactly the same process as the jupyter notebook and also log the hyperparameters with MLflow
-
-Data used is the [coffee quality dataset](https://github.com/jldbc/coffee-quality-database).
-
+## Introduction
+## Problem statement
+## Modules used
+## Results
+## Conclusion
+## Future work
+## Files and folders
 ## Requirements:
 
-- pyenv with Python: 3.9.4
+- pyenv with Python: 3.9.8
 
 ### Setup
 
@@ -31,7 +28,25 @@ pip install --upgrade pip
 pip install -r requirements_dev.txt
 ```
 
-The `requirements.txt` file contains the libraries needed for deployment.. of model or dashboard .. thus no jupyter or other libs used during development.
+The `requirements.txt` file contains the libraries needed for deployment.
+
+
+
+. of model or dashboard .. thus no jupyter or other libs used during development.
+
+----
+Here you find a Skeleton project for building a simple model in a python script or notebook and log the results on MLFlow.
+
+There are two ways to do it: 
+* In Jupyter Notebooks:
+    We train a simple model in the [jupyter notebook](notebooks/EDA-and-modeling.ipynb), where we select only some features and do minimal cleaning. The hyperparameters of feature engineering and modeling will be logged with MLflow
+
+* With Python scripts:
+    The [main script](modeling/train.py) will go through exactly the same process as the jupyter notebook and also log the hyperparameters with MLflow
+
+Data used is the [coffee quality dataset](https://github.com/jldbc/coffee-quality-database).
+
+
 
 The MLFLOW URI should **not be stored on git**, you have two options, to save it locally in the `.mlflow_uri` file:
 
