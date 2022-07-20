@@ -9,3 +9,4 @@ jupyterlab-dash==0.1.0a3
 scikit-learn==1.0.2
 statsmodels==0.13.1
 pytest==7.0.1
+prophet==1.0
