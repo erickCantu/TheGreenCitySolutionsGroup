@@ -79,6 +79,8 @@ def preprocess_building(nr, data_dir="../data", raw_data_dir=None, output_dir=No
         .assign(solar_generation_kW = lambda x: x.solar_generation_W_kW * pv_nominal_power_kW/1000)
     )
 
+    building['net_load_kWh'] = building['equipment_electric_power_kWh'] + building['dhw_heating_kWh'] + building['cooling_load_kWh'] - building['solar_generation_kW']
+
     #4. finally save result to csv.
     building.to_csv(outputfile_stem.with_suffix(".csv"))
 
