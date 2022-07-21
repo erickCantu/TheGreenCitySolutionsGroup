@@ -13,3 +13,4 @@ mlflow==1.27.0
 prophet==1.0
 tbats==1.1.0
 pmdarima==1.8.5
+pydash==5.1.0
