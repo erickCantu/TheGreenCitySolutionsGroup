@@ -14,3 +14,5 @@ prophet==1.0
 tbats==1.1.0
 pmdarima==1.8.5
 pydash==5.1.0
+python-decouple==3.6
+psycopg2==2.9.3

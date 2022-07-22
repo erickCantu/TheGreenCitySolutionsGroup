@@ -137,6 +137,7 @@ models/*
 
 #config file has sensitive data
 .mlflow_uri
+.db_credentials
 
 #vscode
 .vscode/
