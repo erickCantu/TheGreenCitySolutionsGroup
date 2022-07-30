@@ -382,6 +382,13 @@
             ]
           ]
         }
+      },
+      "pv": {
+        "type": "citylearn.energy_model.PV",
+        "autosize": false,
+        "attributes": {
+          "nominal_power": 0.0
+        }
       }
     },
     "Building_3": {
@@ -471,6 +478,13 @@
               0.27
             ]
           ]
+        }
+      },
+      "pv": {
+        "type": "citylearn.energy_model.PV",
+        "autosize": false,
+        "attributes": {
+          "nominal_power": 0.0
         }
       }
     },
@@ -872,6 +886,13 @@
             ]
           ]
         }
+      },
+      "pv": {
+        "type": "citylearn.energy_model.PV",
+        "autosize": false,
+        "attributes": {
+          "nominal_power": 0.0
+        }
       }
     },
     "Building_8": {
@@ -970,6 +991,13 @@
             ]
           ]
         }
+      },
+      "pv": {
+        "type": "citylearn.energy_model.PV",
+        "autosize": false,
+        "attributes": {
+          "nominal_power": 0.0
+        }
       }
     },
     "Building_9": {
@@ -1067,6 +1095,13 @@
               0.3
             ]
           ]
+        }
+      },
+      "pv": {
+        "type": "citylearn.energy_model.PV",
+        "autosize": false,
+        "attributes": {
+          "nominal_power": 0.0
         }
       }
     }
