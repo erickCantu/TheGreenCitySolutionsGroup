@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+from green_city.utils import datetime2index, index2datetime
 
 # Function for plotting actual vs predicted net energy usage
 def plot_ts(actual, predicted, title=None):
@@ -65,5 +66,32 @@ def train_test_time_split(df, features, target, dummy_features):
     X_test = X[(len(X)-365*24):]
     y_test = y[(len(y)-365*24):]
 
-    return X_train, y_train, X_test, y_test, df_train, df_test        
-    
+    return X_train, y_train, X_test, y_test, df_train, df_test
+
+
+def seasons(x):
+    """
+    Group months into seasons
+    """
+    if x in [12,1,2]:
+        return 'winter'
+    elif x in [3,4,5]:
+        return 'spring'
+    elif x in [6,7,8]:
+        return 'summer'
+    elif x in [9,10,11]:
+        return 'autumn'
+
+
+def time_of_day(x):
+    """
+    Group hours into morning, afternoon, evening or night
+    """
+    if x in [7, 8, 9, 10, 11]:
+        return 'morning'
+    elif x in [12, 13, 14, 15, 16]:
+        return 'afternoon'
+    elif x in [17, 18, 19, 20, 21]:
+        return 'evening'
+    elif x in [22, 23, 0, 1, 2, 3, 4, 5, 6]:
+        return 'night'        
