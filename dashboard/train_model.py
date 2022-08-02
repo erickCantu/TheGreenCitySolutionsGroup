@@ -93,7 +93,8 @@ def linreg_model(building_nr=5):
     df_train['linreg_poly'] = y_pred_train_fc
     df_test['linreg_poly'] = y_pred_test_fc
 
-    forecasts = df_test['linreg_poly']
+    forecasts = df_test[['linreg_poly']]
+    forecasts["datetime"] = forecasts.index
     dates = df_test.index
 
     return forecasts, dates
