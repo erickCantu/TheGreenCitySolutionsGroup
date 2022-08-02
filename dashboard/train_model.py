@@ -95,6 +95,6 @@ def linreg_model(building_nr=5):
 
     forecasts = df_test[['linreg_poly']]
     forecasts["datetime"] = forecasts.index
-    dates = df_test.index
+    #dates = df_test.index
 
-    return forecasts, dates
+    return forecasts

@@ -6,11 +6,6 @@ from datetime import datetime, timedelta, date
 today = date.today()
 from train_model import linreg_model
 
-forecasts, date_list = linreg_model(building_nr=5)
-
-# forecasts_df = pd.DataFrame(forecasts)
-
-
 app = Dash(__name__)
 
 app.layout = html.Div([
@@ -18,8 +13,8 @@ app.layout = html.Div([
     html.P("Select color:"),
     dcc.Dropdown(
         id="dropdown1",
-        options=['Gold', 'MediumTurquoise', 'LightGreen'],
-        value='Gold',
+        options=list(range(1, 10)),
+        value=5,
         clearable=False,
     ),
     dcc.Dropdown(
@@ -38,22 +33,16 @@ app.layout = html.Div([
     dcc.Graph(id="graph"),
 ])
 
-
 @app.callback(
     Output("graph", "figure"), 
     Input("dropdown1", "value"),
     Input("dropdown2", "value"),
     Input("my-date-picker-single", "date"),
     )
-def display_color(color, size, date):
-    if size == 'small':
-        data = [0.1, 0.2, 0.6]
-    elif size == 'medium':
-        data = [1, 2, 3]
-    else:
-        data = [10, 20, 20]
+def display_color(building_nr, size, date):
     start_date = pd.Timestamp(date)
     end_date = pd.Timestamp(date) + pd.Timedelta(hours=24)
+    forecasts = linreg_model(building_nr=5)
     masked_forecasts = forecasts.loc[start_date:end_date]
     fig = px.line(masked_forecasts, x="datetime", y="linreg_poly")
     return fig
