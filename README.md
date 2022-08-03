@@ -1,4 +1,13 @@
-# The Green City Solutions Group
+# The Energy of Tomorrow: Forecasting building energy demand 
+
+### **The Green City Solutions Group**
+
+Rafael Arndt, Erick Cantu, Leon Pichotka, Su Leen Wong
+
+
+This repo contains files and jupyter notebooks related to the above project. This project focuses on predicting the hourly building energy demand of 9 buildings in total from the CityLearn Challenge, based on the past 4 years of hourly energy consumption data. 
+
+
 
 
 ## Introduction
