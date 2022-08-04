@@ -1,0 +1,31 @@
+/* restyle radio items */
+body {
+  padding-top: 2em;
+  background-color: rgba(169, 169, 169, 0.312);
+}
+
+.radio-group .form-check {
+    padding-left: 0;
+  }
+  
+  .radio-group .btn-group > .form-check:not(:last-child) > .btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .radio-group .btn-group > .form-check:not(:first-child) > .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -1px;
+  }
+.container {
+  margin-top: 4em;
+  max-width: 1600px;
+}
+
+#building-selection {
+  justify-content: center;
+}
+#building-selection .form-check {
+    padding-left: 0;
+}
