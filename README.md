@@ -38,10 +38,31 @@ Building types:
 ## Problem statement
 Our goal is to model the net energy demand of a collection of 9 buildings which are part of the [2021 CityLearn Challenge](https://sites.google.com/view/citylearnchallenge).
 
+First, the time series data was analyzed for trend and seasonality. 
 
+It seemed suitable to forecast the energy demand for 24 hours, as weather predictions get less accurate further in the future. Else, the power suppliers energy management is mainly focused on a 24 hour period.
+
+
+Different models were applied and compared:
+- Baseline (last years values)
+- Linear Regression
+- Polynomial Regression
+- SARIMAX
+- Prophet
+- TBats
+- XGBoost
+- Random Forest
 
 ## Results
-We found that the time series consisted of a trend, a yearly seasonality, a weekly seasonality and a daily seasonality.
+A small trend in the net energy demand over 4 years was discovered with a slight increase over the first 3 years and a decrease in the 4th year (corresponding to the trend in the weather data). A clear yearly seasonality is found with the highest energy demand in summer (due to air conditioning) and the lowest energy demand in winter (due to mild winters). Furthermore a weekly as well as a daily seasonality was identified.  
+
+> Figure with seasonality
+
+The tree-based machine learning models (Random Forest and XGBoost) performed better than the time series models (SARIMAX, Prophet, TBats) taking the mean squared error as metric.
+
+> Figure with model benchmark
+
+> Figure with model predictions graph
 
 ## Conclusion
 The tree-based machine learning models (Random forest and XGBoost) produced forecasts with the lowest root mean squared error compared to the observed data.
