@@ -11,7 +11,10 @@ This repo contains files and jupyter notebooks related to the above project. Thi
 
 
 ## Introduction
-Electricity cannot be stored in large amounts, therefore supply and demand should always be matched. 
+Since energy prices are continuing to rise and the future of the energy 
+situation is rather uncertain, cities may want to investigate the energy 
+consumption of different building sectors to predict future energy demand and
+identify areas where energy can be saved.
 
 Energy demand forecasting is fundamental for an energy utility’s decision making on:
 
@@ -70,7 +73,9 @@ The tree-based machine learning models (Random forest and XGBoost) produced fore
 ## Future work
 
 
+
 ## Files and folders
+
 
 
 
@@ -93,7 +98,7 @@ pyenv local 3.9.8
 python -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
-pip install -r requirements_dev.txt
+pip install -r requirements.txt
 ```
 
 The `requirements.txt` file contains the libraries needed for deployment.
