@@ -5,8 +5,7 @@
 Rafael Arndt, Erick Cantu, Leon Pichotka, Su Leen Wong
 
 
-This repo contains files and jupyter notebooks related to the above project. This project focuses on predicting the hourly building energy demand of 9 buildings in total from the CityLearn Challenge, based on the past 4 years of hourly energy consumption data. 
-
+This repo contains files and jupyter notebooks related to our capstone project for the Neuefische Data Science bootcamp. This project focuses on predicting the hourly building energy demand of 9 buildings in total from the CityLearn Challenge, based on the past 4 years of hourly energy consumption data. 
 
 
 
@@ -24,9 +23,14 @@ Energy demand forecasting is fundamental for an energy utility’s decision maki
 
 - Reducing energy wastage
 
-Our stakeholder is a city municipality aiming to reduce its energy consumption and . Our stakeholder aims to identify the types of buildings 
+Time series is a sequence of observations taken sequentially in time. 
+
+
+
 
 ## About the dataset
+
+The dataset we used for this project consists of:
 - Synthetic data of 4 years, 9 buildings from the CityLearn Challenge* (southern  US suburb)
 - Hourly data of energy demand and solar generation
 - Hourly weather data (temperature, humidity, solar radiation) 
