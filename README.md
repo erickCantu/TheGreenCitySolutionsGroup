@@ -1,12 +1,10 @@
-# The Energy of Tomorrow: Forecasting building energy demand 
+# Forecasting building energy demand 
 
-### **The Green City Solutions Group**
+By: [Rafael Arndt](https://github.com/r4f), [Erick Cantu](https://github.com/eaunaicr97), [Leon Pichotka](https://github.com/Leee-P) and [Su Leen Wong](https://github.com/suleenwong)
 
-Rafael Arndt, Erick Cantu, Leon Pichotka, Su Leen Wong
+![](images/splash.png)
 
-
-This repo contains files and jupyter notebooks related to our capstone project for the Neuefische Data Science bootcamp. This project focuses on predicting the hourly building energy demand of 9 buildings in total from the CityLearn Challenge, based on the past 4 years of hourly energy consumption data. 
-
+This repository contains files and Jupyter notebooks related to our capstone project for the [Neuefische Data Science bootcamp](https://www.neuefische.de/en/bootcamp/data-science). This project focuses on forecasting the hourly building energy demand of 9 buildings in total from the CityLearn Challenge, based on 4 years energy consumption and weather data. 
 
 
 ## Introduction
@@ -23,9 +21,7 @@ Energy demand forecasting is fundamental for an energy utility’s decision maki
 
 - Reducing energy wastage
 
-Time series is a sequence of observations taken sequentially in time. 
-
-
+Since the data available consists of a series of energy consumption values taken sequentially with a fixed time interval over four years, time series analysis and models are ideal for this problem. 
 
 
 ## About the dataset
@@ -35,7 +31,7 @@ The dataset we used for this project consists of:
 - Hourly data of energy demand and solar generation
 - Hourly weather data (temperature, humidity, solar radiation) 
 
-Building types:
+The nine buildings in this dataset consist of:
 - Building 1: Office building
 - Building 2: Fast food restaurant
 - Building 3: Standalone retail
