@@ -69,13 +69,6 @@ The tree-based machine learning models (Random Forest and XGBoost) performed bet
 
 ## Conclusion
 The tree-based machine learning models (Random forest and XGBoost) produced forecasts with the lowest root mean squared error compared to the observed data.
-
-## Future work
-We have two approaches for our future work. A business approach and an Machine Learning optimization approach. 
-
-For our business oriented future work. We plan to implement a dashboard solution to predict real-time energy demand.  The solution will allow the stockholder to feed current data, helping them with their decisions to balance their energy demand.
-
-At our Machine Learning optimization approach. We plan to optimize the models generalization with respect to different climate zones. Our current plan is to evaluate a one solution for all zones vs individual climate zones solutions. Furthermore we plant to develop a reinforcement learning agent(s) with the aim of optimizing battery usage towards cost reduction and improvement in the stability of the energy grid. 
  
 ## Prerequisites / How to run
 The project notebooks require a `pyenv with Python: 3.9.8`.  To properly setup the environment use the requirements file in the repository as follows:
@@ -122,5 +115,38 @@ python dasboard.py
 and openning the link [http://127.0.0.1:8113/](http://127.0.0.1:8113/)
 
 ## Files 
-The notebooks are divided in two sections. Exploratory Data Analysis (EDA) and Time Series (TS) models. These sections are part of the notebook prefix name. 
+Original data is available at [Citylearn v1.0.0 release](https://github.com/intelligent-environments-lab/CityLearn/releases/tag/v1.0.0). Preprocessed data for our analysis is located at the [preprocessed folder](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/tree/main/data/preprocessed).
 
+Jpyther notebooks are divided in two sections. Exploratory Data Analysis (EDA) and Time Series (TS) models. These sections are part of the notebook prefix name. 
+
+|EDA   | Description |
+|:---|---|
+|[Data Pre-processing](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/EDA_preprocessing.ipynb)|Data setup for time series analysis|
+|[Weather analysis](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/EDA_weather.ipynb)|Exploratory analysis on weather variables. e.g. Temperature, Solar radiation.|
+|[Seasonality decomposition](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/EDA_Weekly_Decomposition.ipynb)|Seasonality decomposition. Moving average period = 7 days|
+|[Data Visualization](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/EDA_data_visualization.ipynb)|Data visualization|
+|[Yearly seasonality decomposition](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/EDA_data_visualization_weekly.ipynb)|Yearly seasonality decomposition. And meteorological seasons analysis. Moving average period = 7 days|
+|||
+
+
+|TS 8 day predictions models |Description|
+|:---|:---|
+|[Base line](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_baseline.ipynb)|Previous 24 hrs energy demand value|
+|[Linear Regression](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/Regression.ipynb)||
+|[Polynomial Regression](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/Regression.ipynb)||
+|[SARIMAX](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_24h_sarimax.ipynb)||
+|[Prophet](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_prophet.ipynb)|Model with hyperparameter optimization, holidays, weather data as additional reggressors and weekly seasonality by meteorological seasons|
+|[TBats](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_24h_tbats.ipynb)||
+|[XGBoost](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_XGBoost.ipynb)||
+|[Random Forest](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/ML.ipynb)||
+|||
+
+
+
+
+## Future work
+We have two approaches for our future work. A business approach and an Machine Learning optimization approach. 
+
+For our business oriented future work. We plan to implement a dashboard solution to predict real-time energy demand.  The solution will allow the stockholder to feed current data, helping them with their decisions to balance their energy demand.
+
+At our Machine Learning optimization approach. We plan to optimize the models generalization with respect to different climate zones. Our plan is to evaluate a one solution for all climate zones vs individual climate zone solutions. Furthermore we plant to develop a reinforcement learning agent(s) with the aim of battery usage optimization towards cost reduction and energy grid stability improvement.
