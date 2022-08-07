@@ -71,12 +71,14 @@ The tree-based machine learning models (Random Forest and XGBoost) performed bet
 The tree-based machine learning models (Random forest and XGBoost) produced forecasts with the lowest root mean squared error compared to the observed data.
 
 ## Future work
-Our business oriented future work is to implement a real-time energy demand prediction in our dashboard solution. We aim to support our stockholder in their decision to balance its energy demand.
+We have two approaches for our future work. A business approach and an Machine Learning optimization approach. 
 
-Our research future work is to evaluate how our model generalization in contrast with different temperature zones and countries. Furthermore implement a neural network algorithm to outperform the random forest results. And, develop a reinforcement learning agent to optimize battery usage towards cost reduction and improvement of the energy grid stability. 
+For our business oriented future work. We plan to implement a dashboard solution to predict real-time energy demand.  The solution will allow the stockholder to feed current data, helping them with their decisions to balance their energy demand.
+
+At our Machine Learning optimization approach. We plan to optimize the models generalization with respect to different climate zones. Our current plan is to evaluate a one solution for all zones vs individual climate zones solutions. Furthermore we plant to develop a reinforcement learning agent(s) with the aim of optimizing battery usage towards cost reduction and improvement in the stability of the energy grid. 
  
 ## Prerequisites / How to run
-The project notebooks require a `pyenv with Python: 3.9.8`.  To properly setup the environment. Use the requirements file in the repository to create a new environment as follows:
+The project notebooks require a `pyenv with Python: 3.9.8`.  To properly setup the environment use the requirements file in the repository as follows:
 
 ```BASH
 make setup
@@ -111,5 +113,14 @@ mlflow ui
 
 and open the link [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-## Files and folders
+The dashboard deployment can be accessed by running:
+
+```BASH
+cd dashboard
+python dasboard.py 
+````
+and openning the link [http://127.0.0.1:8113/](http://127.0.0.1:8113/)
+
+## Files 
+The notebooks are divided in two sections. Exploratory Data Analysis (EDA) and Time Series (TS) models. These sections are part of the notebook prefix name. 
 
