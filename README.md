@@ -71,22 +71,12 @@ The tree-based machine learning models (Random Forest and XGBoost) performed bet
 The tree-based machine learning models (Random forest and XGBoost) produced forecasts with the lowest root mean squared error compared to the observed data.
 
 ## Future work
+Our business oriented future work is to implement a real-time energy demand prediction in our dashboard solution. We aim to support our stockholder in their decision to balance its energy demand.
 
-
-
-## Files and folders
-
-
-
-
-## Requirements:
-
-- pyenv with Python: 3.9.8
-
-
-### Setup
-
-Use the requirements file in this repo to create a new environment as follows:
+Our research future work is to evaluate how our model generalization in contrast with different temperature zones and countries. Furthermore implement a neural network algorithm to outperform the random forest results. And, develop a reinforcement learning agent to optimize battery usage towards cost reduction and improvement of the energy grid stability. 
+ 
+## Prerequisites / How to run
+The project notebooks require a `pyenv with Python: 3.9.8`.  To properly setup the environment. Use the requirements file in the repository to create a new environment as follows:
 
 ```BASH
 make setup
@@ -101,5 +91,25 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-The `requirements.txt` file contains the libraries needed for deployment.
+
+The `requirements.txt` file contains the libraries needed for the EDA, Time Series Analysis and the dash board deployment. 
+
+The time series models results (MAE, MSE and R2)P are trackable through [MLFlow](https://mlflow.org).  The required MLFLOW URI file is not part of this repository.  Before running the time series jupyter notebooks and locally save the results you require a `.mlflow_uri` file in the repository root. In bash do:
+
+```BASH
+echo http://127.0.0.1:5000/ > .mlflow_uri
+```
+
+This will create a local file where the uri is stored which will not be added on github (`.mlflow_uri` is in the `.gitignore` file). 
+
+Before running the time series notebook, check your local mlflow by:
+
+
+```bash
+mlflow ui
+```
+
+and open the link [http://127.0.0.1:5000](http://127.0.0.1:5000)
+
+## Files and folders
 
