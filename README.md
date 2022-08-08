@@ -133,7 +133,7 @@ and opening the link [http://127.0.0.1:8100/](http://127.0.0.1:8100/) in a brows
 ## __Files in the repo__ 
 Original data is available at [Citylearn v1.0.0 release](https://github.com/intelligent-environments-lab/CityLearn/releases/tag/v1.0.0). Preprocessed data for our analysis is located at the [preprocessed folder](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/tree/main/data/preprocessed).
 
-Juyther notebooks are divided in two sections. Exploratory Data Analysis (EDA) and Time Series (TS) models. These sections are part of the notebook prefix name. 
+Jupyter notebooks are divided in two sections. Exploratory Data Analysis (EDA) and Time Series (TS) models. These sections are part of the notebook prefix name. 
 
 |EDA   | Description |
 |:---|---|
@@ -160,9 +160,10 @@ Juyther notebooks are divided in two sections. Exploratory Data Analysis (EDA) a
 
 
 
+
 ## __Future work__
 We have two approaches for our future work. A business approach and a Machine Learning optimization approach. 
 
-For our business oriented future work, we plan to implement a dashboard solution to predict real-time energy demand.  The solution will allow the stakeholder to feed current data, helping them with their decisions to balance their energy demand.
+For our business oriented future work, we plan to implement a dashboard solution to predict real-time energy demand.  The solution will allow the stockholder to feed current data, helping them with their decisions to balance their energy demand.
 
-At our Machine Learning optimization approach. We plan to optimize the models generalization with respect to different climate zones. Our plan is to evaluate a one solution for all climate zones vs individual climate zone solutions. Furthermore we plant to develop a reinforcement learning agent(s) with the aim of battery usage optimization towards cost reduction and energy grid stability improvement.
+As for our Machine Learning optimization approach, we plan to optimize the models generalization with respect to different climate zones. Our plan is to evaluate a one solution for all climate zones vs individual climate zone solutions. Furthermore we plant to develop a reinforcement learning agent(s) with the aim of battery usage optimization towards cost reduction and energy grid stability improvement.
