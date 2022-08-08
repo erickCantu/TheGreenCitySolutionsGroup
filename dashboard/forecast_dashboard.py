@@ -39,7 +39,7 @@ preset_dropdown = dcc.Dropdown(
 
 radioitems = html.Div(
     [
-        html.H4("Building", className="pl-0"),
+        html.H4("Building", className="pl-0 pt-4"),
         dbc.RadioItems(
             options=[*[{"label": f"{i}", "value": i} for i in range(1, 10)],
                 {"label": "All", "value": "all"},
@@ -124,8 +124,8 @@ left_div = html.Div([
 right_div = html.Div([
     checklist,
     switches
-], className="col-2 bg-light",
-style={"position": "relative"},
+], className="col-2",
+style={"position": "relative", "background-color": "rgb(230, 245, 252)"},
 )
 
 time_input_group = html.Div([
@@ -160,8 +160,21 @@ style={"background-color": "rgb(255,255,255)"},
 app.layout = html.Div(
     [
         html.Div([
+            html.Div([],
+            className="col-1 my-3 companylogo",
+            #style={'background-image': "assets/green-energy.png"},
+            ),
             html.Div([
-                html.H1("Energy usage forecast", className="p-0 pt-4 pb-2"),
+                html.H1("Forecasting building energy demand")
+                ],
+                className="col-11",
+                style={'background-color': 'rgb(149, 184, 116)',
+                       'color': 'white', "padding": "20px"}
+            ),
+        ], className="row"),
+        html.Div([
+            html.Div([
+                #html.H1("Energy usage forecast", className="p-0 pt-4 pb-2"),
                 html.Div([
                     left_div, middle_div,
                 ], className="row"),
@@ -169,7 +182,7 @@ app.layout = html.Div(
             right_div
         ], className="row"),
     ],
-className="container dash-bootstrap")
+className="container dash-bootstrap mt-0")
 
 @app.callback(
         Output("graph", "figure"),
@@ -183,7 +196,7 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
 
     forecast_df = forecasts[building_nr]
     df = dfs[building_nr]
-
+    
     year_start = pd.Timestamp("2011-01-01")
     year_end = pd.Timestamp("2011-12-31 23:00")
 
@@ -229,6 +242,10 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
         linewidth=0,
         linecolor="white",
     )
+
+    #fig.update_xaxes(
+    #    tickformat="%H:%M\n Aug %d, 2022")
+
     return fig
 
 app.run_server(debug=True, port=8100)
