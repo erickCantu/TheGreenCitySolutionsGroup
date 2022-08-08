@@ -70,12 +70,10 @@ Different models were applied and compared:
 A small trend in the net energy demand over 4 years was discovered with a slight increase over the first 3 years and a decrease in the 4th year (corresponding to the trend in the weather data). A clear yearly seasonality is found with the highest energy demand in summer (due to air conditioning) and the lowest energy demand in winter (due to mild winters). Furthermore a weekly as well as a daily seasonality was identified.  
 
 > Trend and yearly seasonality
-<img src="../images/decomposition_yearly_net_energy_usage_final_presentation.png" width="750"/>
-
+![](images/decomposition_yearly_net_energy_usage_final_presentation.png.png)
 > Weekly and daily seasonality
-<img src="../images/montly_seasonality_net_energy_usage_final_presentation.png" width="750"/>
-<img src="../images/daily_seasonality_net_energy_usage_final_presentation.png" width="750"/>
-
+![](images/montly_seasonality_net_energy_usage_final_presentation.png.png)
+![](images/daily_seasonality_net_energy_usage_final_presentation.png.png)
 The tree-based machine learning models (Random Forest and XGBoost) performed better than the time series models (SARIMAX, Prophet, TBats) taking the mean squared error as metric.
 
 > Figure with model benchmark
