@@ -62,3 +62,25 @@ def plot_decomposition(seas_decomp_yearly):
         y=seas_decomp_yearly.resid,
         color=sns_c[3],
         s=4)
+
+def plot_for_presentation():
+        #The Barlow font can be downloaded from https://fonts.google.com/specimen/Barlow
+
+        plt.rcParams['figure.figsize'] = [10, 3.5]
+        #The presentation has dimensions of 10in by 5.63in (in 16:9 format)
+        plt.rcParams['legend.fontsize'] = 14
+        plt.rcParams['figure.dpi'] = 200
+        plt.rcParams['font.family'] = 'sans-serif'
+        plt.rcParams['font.sans-serif'] = ['Barlow']
+
+        fig, ax = plt.subplots()
+        ax.plot(list(range(8)), [0,3,2,4,3,2,1,5], label="function 1")
+        ax.plot(list(range(8)), [0,2,5,6,7,4,3,5], label="function 2")
+        fig.suptitle("Energy demand forecasts (Year 4, Apr 15 - 16)", size=16)
+        ax.legend(prop={'size': 10})
+        plt.yticks(fontsize=10)
+        plt.xticks(fontsize=10)
+
+        plt.savefig("../images/tmp_test.png")
+        #in the google slide presentation, the image has to be scaled to ['figure.figsize'] = [10, 3.5],
+        # because it sometimes automatically scales to other sizes
