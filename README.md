@@ -14,7 +14,7 @@ This repository contains files and Jupyter notebooks related to our capstone pro
 * <span style="color:grey"> [__Results__](#results)
 * <span style="color:grey"> [__Conclusion__](#conclusion)
 * <span style="color:grey"> [__Prerequisites / How to run__](#prerequisites-how-to-run)
-* <span style="color:grey"> [__Files__](#files)
+* <span style="color:grey"> [__Files in the repo__](#files-in-the-repo)
 * <span style="color:grey"> [__Future word__](#future-work)
 
 ## __Introduction__
@@ -70,17 +70,18 @@ Different models were applied and compared:
 A small trend in the net energy demand over 4 years was discovered with a slight increase over the first 3 years and a decrease in the 4th year (corresponding to the trend in the weather data). A clear yearly seasonality is found with the highest energy demand in summer (due to air conditioning) and the lowest energy demand in winter (due to mild winters). Furthermore a weekly as well as a daily seasonality was identified.  
 
 > Trend and yearly seasonality
-<img src="../images/decomposition_yearly_net_energy_usage_final_presentation.png" width="750"/>
-
-> Weekly and daily seasonality
-<img src="../images/montly_seasonality_net_energy_usage_final_presentation.png" width="750"/>
-<img src="../images/daily_seasonality_net_energy_usage_final_presentation.png" width="750"/>
-
+![](images/decomposition_yearly_net_energy_usage_final_presentation.png)
+> Weekly seasonality
+![](images/montly_seasonality_net_energy_usage_final_presentation.png)
+> Daily seasonality
+![](images/daily_seasonality_net_energy_usage_final_presentation.png)
 The tree-based machine learning models (Random Forest and XGBoost) performed better than the time series models (SARIMAX, Prophet, TBats) taking the mean squared error as metric.
 
-> Figure with model benchmark
+> Model benchmark
+![](images/benchmark.png)
 
-> Figure with model predictions graph
+> Forecast for 24 hours
+![](images/example_forecast.png)
 
 ## __Conclusion__
 The tree-based machine learning models (Random forest and XGBoost) produced forecasts with the lowest root mean squared error compared to the observed data.
@@ -129,7 +130,7 @@ python forecast_dashboard.py
 ````
 and openning the link [http://127.0.0.1:8100/](http://127.0.0.1:8100/)
 
-## __Files__ 
+## __Files in the repo__ 
 Original data is available at [Citylearn v1.0.0 release](https://github.com/intelligent-environments-lab/CityLearn/releases/tag/v1.0.0). Preprocessed data for our analysis is located at the [preprocessed folder](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/tree/main/data/preprocessed).
 
 Jpyther notebooks are divided in two sections. Exploratory Data Analysis (EDA) and Time Series (TS) models. These sections are part of the notebook prefix name. 
