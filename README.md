@@ -6,8 +6,18 @@ By: [Rafael Arndt](https://github.com/r4f), [Erick Cantu](https://github.com/eau
 
 This repository contains files and Jupyter notebooks related to our capstone project for the [Neuefische Data Science bootcamp](https://www.neuefische.de/en/bootcamp/data-science). This project focuses on forecasting the hourly building energy demand of 9 buildings in total from the CityLearn Challenge, based on 4 years energy consumption and weather data. 
 
+## __Content__
 
-## Introduction
+* <span style="color:grey"> [__Introduction__](#Introduction)
+* <span style="color:grey"> [__About the dataset__](#about-the-dataset)
+* <span style="color:grey"> [__Problem statement__](#problem-statement)
+* <span style="color:grey"> [__Results__](#results)
+* <span style="color:grey"> [__Conclusion__](#conclusion)
+* <span style="color:grey"> [__Prerequisites / How to run__](#prerequisites-how-to-run)
+* <span style="color:grey"> [__Files__](#files)
+* <span style="color:grey"> [__Future word__](#future-work)
+
+## __Introduction__
 Since energy prices are continuing to rise and the future of the energy 
 situation is rather uncertain, cities may want to investigate the energy 
 consumption of different building sectors to predict future energy demand and
@@ -24,7 +34,7 @@ Energy demand forecasting is fundamental for an energy utility’s decision maki
 Since the data available consists of a series of energy consumption values taken sequentially with a fixed time interval over four years, time series analysis and models are ideal for this problem. 
 
 
-## About the dataset
+## __About the dataset__
 
 The dataset we used for this project consists of:
 - Synthetic data of 4 years, 9 buildings from the CityLearn Challenge* (southern  US suburb)
@@ -38,7 +48,7 @@ The nine buildings in this dataset consist of:
 - Building 4: Strip mall retail
 - Buildings 5-9: Multi-family buildings
 
-## Problem statement
+## __Problem statement__
 Our goal is to model the net energy demand of a collection of 9 buildings which are part of the [2021 CityLearn Challenge](https://sites.google.com/view/citylearnchallenge).
 
 First, the time series data was analyzed for trend and seasonality. 
@@ -56,10 +66,15 @@ Different models were applied and compared:
 - XGBoost
 - Random Forest
 
-## Results
+## __Results__
 A small trend in the net energy demand over 4 years was discovered with a slight increase over the first 3 years and a decrease in the 4th year (corresponding to the trend in the weather data). A clear yearly seasonality is found with the highest energy demand in summer (due to air conditioning) and the lowest energy demand in winter (due to mild winters). Furthermore a weekly as well as a daily seasonality was identified.  
 
-> Figure with seasonality
+> Trend and yearly seasonality
+<img src="../images/decomposition_yearly_net_energy_usage_final_presentation.png" width="750"/>
+
+> Weekly and daily seasonality
+<img src="../images/montly_seasonality_net_energy_usage_final_presentation.png" width="750"/>
+<img src="../images/daily_seasonality_net_energy_usage_final_presentation.png" width="750"/>
 
 The tree-based machine learning models (Random Forest and XGBoost) performed better than the time series models (SARIMAX, Prophet, TBats) taking the mean squared error as metric.
 
@@ -67,10 +82,10 @@ The tree-based machine learning models (Random Forest and XGBoost) performed bet
 
 > Figure with model predictions graph
 
-## Conclusion
+## __Conclusion__
 The tree-based machine learning models (Random forest and XGBoost) produced forecasts with the lowest root mean squared error compared to the observed data.
  
-## Prerequisites / How to run
+## __Prerequisites / How to run__
 The project notebooks require a `pyenv with Python: 3.9.8`.  To properly setup the environment use the requirements file in the repository as follows:
 
 ```BASH
@@ -110,11 +125,11 @@ The dashboard deployment can be accessed by running:
 
 ```BASH
 cd dashboard
-python dasboard.py 
+python forecast_dashboard.py 
 ````
-and openning the link [http://127.0.0.1:8113/](http://127.0.0.1:8113/)
+and openning the link [http://127.0.0.1:8100/](http://127.0.0.1:8100/)
 
-## Files 
+## __Files__ 
 Original data is available at [Citylearn v1.0.0 release](https://github.com/intelligent-environments-lab/CityLearn/releases/tag/v1.0.0). Preprocessed data for our analysis is located at the [preprocessed folder](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/tree/main/data/preprocessed).
 
 Jpyther notebooks are divided in two sections. Exploratory Data Analysis (EDA) and Time Series (TS) models. These sections are part of the notebook prefix name. 
@@ -137,14 +152,14 @@ Jpyther notebooks are divided in two sections. Exploratory Data Analysis (EDA) a
 |[SARIMAX](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_24h_sarimax.ipynb)||
 |[Prophet](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_prophet.ipynb)|Model with hyperparameter optimization, holidays, weather data as additional reggressors and weekly seasonality by meteorological seasons|
 |[TBats](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_24h_tbats.ipynb)||
-|[XGBoost](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_XGBoost.ipynb)||
+|[XGBoost](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_XGBoost.ipynb)|Model including weather features and time features. Net energy demand as target. Additionally a 24 hour time lag + 1,2,3 weeks time lag of the target feature is used.|
 |[Random Forest](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/ML.ipynb)||
 |||
 
 
 
 
-## Future work
+## __Future work__
 We have two approaches for our future work. A business approach and an Machine Learning optimization approach. 
 
 For our business oriented future work. We plan to implement a dashboard solution to predict real-time energy demand.  The solution will allow the stockholder to feed current data, helping them with their decisions to balance their energy demand.
