@@ -52,3 +52,38 @@ def datetime2index(dt):
 def index2datetime(index):
     dt = datetime.datetime(2008, 1, 2) + datetime.timedelta(hours=index)
     return dt
+
+def unite_all_pickles():
+    buildings_list = [*list(range(1, 10)), "all"]
+    models_list = ["linreg_poly", "random_forest", "xgboost", "xgboost_reduced_features"]
+
+    forecasts = {}
+    for i in buildings_list:
+        forecasts[i] = {}
+        for model in models_list:
+            forecast_df = pd.read_pickle(f'../data/models/{model}_building_{i}.pkl')
+            if model == 'xgboost_reduced_features':
+                forecast_df = forecast_df.rename(columns={'xgboost': model})
+            assert model in forecast_df.columns
+            forecasts[i][model] = forecast_df
+    df_all = pd.DataFrame({
+        (i, model): forecasts[i][model][model] for i in buildings_list for model in models_list
+    })
+
+    for i in buildings_list:
+        if i=="all":
+            filename = "Agg_buildings.csv"
+        else:
+            filename = f"Building_{i}.csv"
+        df = (pd
+            .read_csv("../data/preprocessed/" + filename)
+            .astype({'datetime': 'datetime64'})
+            .rename(columns={"net_load_kW": "actual_usage"})
+            .set_index('datetime')
+            [["outdoor_temp", "actual_usage"]]
+        )
+        df_all[(i, "outdoor_temp")] = df["outdoor_temp"]
+        df_all[(i, "actual_usage")] = df["actual_usage"]
+        df_all[(i, "baseline")] = df.actual_usage.shift(24*365)
+
+    df_all.to_pickle("../data/models/all_models.pkl")

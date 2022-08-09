@@ -1,7 +1,39 @@
 /* restyle radio items */
 body {
-  padding-top: 2em;
-  background-color: rgba(169, 169, 169, 0.312);
+  /*padding-top: 2em;*/
+  /*padding: 0px;*/
+  /*margin: 0px;*/
+  /*background-color: rgba(169, 169, 169, 0.312);*/
+  background-color: rgb(149, 184, 116);
+}
+
+.container {
+  /*margin: 0px;*/
+  margin-top: 0px!;
+}
+
+.companylogo {
+  background-image: url("/assets/green-energy.png");
+  background-position: 1em center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain;
+}
+
+.TGCSG_long {
+  display: none;
+}
+@media screen and (min-width: 1500px) {
+  .TGCSG_short {
+    display: none;
+  }
+  .TGCSG_long {
+    display: inline;
+  }
+}
+
+H1 {
+  font-family: Barlow, Arial, Helvetica, sans-serif;
+  font-size: 40px;
 }
 
 .radio-group .form-check {
@@ -28,4 +60,13 @@ body {
 }
 #building-selection .form-check {
     padding-left: 0;
+}
+
+.footerinfo {
+  background-color: rgb(230, 230, 230);
+  color: white;
+}
+.footerinfo2 {
+  background-color: rgb(250, 250, 250);
+  color: white;
 }
