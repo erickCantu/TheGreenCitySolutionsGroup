@@ -4,7 +4,7 @@ By: [Rafael Arndt](https://github.com/r4f), [Erick Cantu](https://github.com/eau
 
 ![](images/splash.png)
 
-This repository contains files and Jupyter notebooks related to our capstone project for the [Neuefische Data Science bootcamp](https://www.neuefische.de/en/bootcamp/data-science). This project focuses on forecasting the hourly building energy demand of 9 buildings in total from the CityLearn Challenge, based on 4 years energy consumption and weather data. 
+This repository contains files and Jupyter notebooks related to our capstone project for the [Neuefische Data Science bootcamp](https://www.neuefische.de/en/bootcamp/data-science). This project focuses on forecasting the hourly building energy demand of 9 buildings in total from the CityLearn Challenge, based on 4 years energy consumption and weather data. The presentation of the project can be found [here](Capstone_Project_Presentation.pdf).
 
 ## __Content__
 
@@ -13,9 +13,10 @@ This repository contains files and Jupyter notebooks related to our capstone pro
 * <span style="color:grey"> [__Problem statement__](#problem-statement)
 * <span style="color:grey"> [__Results__](#results)
 * <span style="color:grey"> [__Conclusion__](#conclusion)
+* <span style="color:grey"> [__Dashboard__](#dashboard)
 * <span style="color:grey"> [__Prerequisites / How to run__](#prerequisites-how-to-run)
 * <span style="color:grey"> [__Files in the repo__](#files-in-the-repo)
-* <span style="color:grey"> [__Future word__](#future-work)
+* <span style="color:grey"> [__Future work__](#future-work)
 
 ## __Introduction__
 Since energy prices are continuing to rise and the future of the energy 
@@ -69,22 +70,33 @@ Different models were applied and compared:
 ## __Results__
 A small trend in the net energy demand over 4 years was discovered with a slight increase over the first 3 years and a decrease in the 4th year (corresponding to the trend in the weather data). A clear yearly seasonality is found with the highest energy demand in summer (due to air conditioning) and the lowest energy demand in winter (due to mild winters). Furthermore a weekly as well as a daily seasonality was identified.  
 
+### Time Series Analysis
+
 > Trend and yearly seasonality
 ![](images/decomposition_yearly_net_energy_usage_final_presentation.png)
 > Weekly seasonality
 ![](images/montly_seasonality_net_energy_usage_final_presentation.png)
 > Daily seasonality
 ![](images/daily_seasonality_net_energy_usage_final_presentation.png)
-The tree-based machine learning models (Random Forest and XGBoost) performed better than the time series models (SARIMAX, Prophet, TBats) taking the mean squared error as metric.
+
+### Modelling 
 
 > Model benchmark
 ![](images/benchmark.png)
+
+The tree-based machine learning models (Random Forest and XGBoost) performed better than the time series models (SARIMAX, Prophet, TBats) taking the mean absolute error as metric.
 
 > Forecast for 24 hours
 ![](images/example_forecast.png)
 
 ## __Conclusion__
-The tree-based machine learning models (Random forest and XGBoost) produced forecasts with the lowest root mean squared error compared to the observed data.
+The tree-based machine learning models (Random forest and XGBoost) produced forecasts with the lowest mean absolute error compared to the observed data.
+
+## __Dashboard__
+The dashboard can be used to present the models results and compare then the for any date in the test year (year 4 = 2022)
+
+![](images/dashboard.png)
+
  
 ## __Prerequisites / How to run__
 The project notebooks require a `pyenv with Python: 3.9.8`.  To properly setup the environment use the requirements file in the repository as follows:
@@ -154,8 +166,9 @@ Jpyther notebooks are divided in two sections. Exploratory Data Analysis (EDA) a
 |[Prophet](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_prophet.ipynb)|Model with hyperparameter optimization, holidays, weather data as additional reggressors and weekly seasonality by meteorological seasons|
 |[TBats](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_24h_tbats.ipynb)||
 |[XGBoost](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_XGBoost.ipynb)|Model including weather features and time features. Net energy demand as target. Additionally a 24 hour time lag + 1,2,3 weeks time lag of the target feature is used.|
+|[XGBoost refinded](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/component_wise_ml.ipynb)|Model including weather features and time features. Additionally a 24 hour time lag + 1,2,3 weeks time lag of the target feature is used. Every energy demand is predicted separately and summed up afterwards|
 |[Random Forest](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/ML.ipynb)| Model including weather features and time features. Net energy demand as target. Additionally a 24 hour time lag and 1 week time lag of the target feature is used. |
-|||
+
 
 
 
