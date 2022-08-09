@@ -84,7 +84,7 @@ checklist = html.Div(
                 {"label": "Linear regression", "value": "linreg_poly", "disabled": False},
                 {"label": "Baseline", "value": "baseline"},
             ],
-            value=["xgboost"],
+            value=[],
             id="model-selection",
         ),
     ]
@@ -95,11 +95,11 @@ switches = html.Div(
         html.H4("View options"),
         dbc.Checklist(
             options=[
-                {"label": "Display weather data", "value": "weather", "disabled": False},
+                #{"label": "Display weather data", "value": "weather", "disabled": False},
                 {"label": "Display actual data", "value": "actual"},
                 {"label": "Show previous day", "value": "previousday", "disabled": False},
             ],
-            value=[],
+            value=["actual"],
             id="config-toggles",
             switch=True,
             className="ml-3",
@@ -237,9 +237,42 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
     masked_forecasts = building_forecasts.loc[start_date+pd.Timedelta(hours=1):end_date]
     mf2 = building_forecasts.loc[day_before:start_date]
 
+    #fig = go.Figure()
     fig = px.line(x=masked_forecasts.index, y=[np.nan for _ in masked_forecasts.index], template="simple_white",)
-                  #specs=[])
+    #              specs=[])
+    #fig = px.line(x=masked_forecasts.index, y=[np.nan for _ in masked_forecasts.index], template="simple_white",)
+    #              specs=[])
+    #fig.add_trace(go.Scatter(
+    #    x=masked_forecasts.index,
+    #    y=[np.nan for _ in masked_forecasts.index],
+    #    name="yaxis1 data",
+    #))
     #fig = make_subplots(specs=[[{"secondary_y": True}]])
+    
+    #fig.update_layout(
+    #    yaxis=dict(
+    #        title="yaxis title",
+    #        titlefont=dict(
+    #            color="#1f77b4"
+    #        ),
+    #        tickfont=dict(
+    #            color="#1f77b4"
+    #        )
+    #    ),
+    #    yaxis2=dict(
+    #        title="yaxis2 title",
+    #        titlefont=dict(
+    #            color="#ff7f0e"
+    #        ),
+    #        tickfont=dict(
+    #            color="#ff7f0e"
+    #        ),
+    #        anchor="free",
+    #        overlaying="y",
+    #        side="left",
+    #        position=0.15
+    #    ),
+    #)
 
     actual_usage = building_forecasts["actual_usage"]
     current_actual_usage = actual_usage[start_date]
@@ -285,14 +318,21 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
         "linreg_poly": "Linear regression",
         "baseline": "Baseline",
     }
+    model_colors = {
+        "xgboost": "green",
+        "xgboost_reduced_features": "blue",
+        "random_forest": "red",
+        "linreg_poly": "gray",
+        "baseline": "orange",
+    }
     for model in models:
         times = [start_date, *masked_forecasts.index]
         values = [current_actual_usage, *masked_forecasts[model]]
         #fig.append_trace({'x':masked_forecasts.index, 'y':masked_forecasts[model]}, 1, 1)
-        fig.append_trace({'x':times, 'y':values, 'name': model_names[model]}, row=1, col=1)#, secondary_y=True)
+        fig.append_trace({'x':times, 'y':values, 'name': model_names[model], 'line': {'color': model_colors[model]}}, row=1, col=1)#, secondary_y=True)
     
-    if ("weather" in config_toggles) and ("previousday" in config_toggles):
-        fig.append_trace({'x':mf2.index, 'y':mf2["outdoor_temp"], 'name': 'Outdoor temperature'}, 1, 1)
+    #if ("weather" in config_toggles) and ("previousday" in config_toggles):
+    #    fig.append_trace({'x':mf2.index, 'y':mf2["outdoor_temp"], 'name': 'Outdoor temperature', 'yaxis': 'yaxis2'}, 1, 1)
 
     #if "baseline" in models:
     #    fig.append_trace({'x':masked_forecasts.index, 'y':masked_forecasts.baseline}, 1, 1)
