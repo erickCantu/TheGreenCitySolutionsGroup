@@ -75,16 +75,16 @@ checklist = html.Div(
         html.H3("Prediction models", style={"margin-top": "4.5em"}),
         dbc.Checklist(
             options=[
-                {"label": "Linear regression", "value": "linreg_poly", "disabled": False},
-                {"label": "SARIMAX", "value": "sarimax", "disabled": True},
-                {"label": "Prophet", "value": "prophet", "disabled": True},
-                {"label": "TBATS", "value": "tbats", "disabled": True},
-                {"label": "Random Forest", "value": "random_forest"},
+                #{"label": "SARIMAX", "value": "sarimax", "disabled": True},
+                #{"label": "Prophet", "value": "prophet", "disabled": True},
+                #{"label": "TBATS", "value": "tbats", "disabled": True},
                 {"label": "XGBoost", "value": "xgboost"},
                 {"label": "XGB (reduced features)", "value": "xgboost_reduced_features"},
+                {"label": "Random Forest", "value": "random_forest"},
+                {"label": "Linear regression", "value": "linreg_poly", "disabled": False},
                 {"label": "Baseline", "value": "baseline"},
             ],
-            value=["linreg_poly"],
+            value=["xgboost"],
             id="model-selection",
         ),
     ]
@@ -237,7 +237,9 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
     masked_forecasts = building_forecasts.loc[start_date+pd.Timedelta(hours=1):end_date]
     mf2 = building_forecasts.loc[day_before:start_date]
 
-    fig = px.line(x=masked_forecasts.index, y=[np.nan for _ in masked_forecasts.index], template="simple_white")
+    fig = px.line(x=masked_forecasts.index, y=[np.nan for _ in masked_forecasts.index], template="simple_white",)
+                  #specs=[])
+    #fig = make_subplots(specs=[[{"secondary_y": True}]])
 
     actual_usage = building_forecasts["actual_usage"]
     current_actual_usage = actual_usage[start_date]
@@ -249,6 +251,7 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
              'mode': 'lines',
              'x': df_actual.index,
              'y': df_actual,
+             'name': 'Actual usage',
              'line': {
                 'color': 'black',
              }},
@@ -262,6 +265,7 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
              'mode': 'lines',
              'x': df_actual.index,
              'y': df_actual,
+             'name': 'Actual usage',
              'line': {
                 'color': 'black',
                 'dash': 'dash',
@@ -269,15 +273,26 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
              row=1, col=1,
         )
 
+    {"label": "XGBoost", "value": "xgboost"},
+    {"label": "XGB (reduced features)", "value": "xgboost_reduced_features"},
+    {"label": "Random Forest", "value": "random_forest"},
+    {"label": "Linear regression", "value": "linreg_poly", "disabled": False},
+    {"label": "Baseline", "value": "baseline"},
+    model_names = {
+        "xgboost": "XGBoost",
+        "xgboost_reduced_features": "XGBoost (reduced features)",
+        "random_forest": "Random forest",
+        "linreg_poly": "Linear regression",
+        "baseline": "Baseline",
+    }
     for model in models:
         times = [start_date, *masked_forecasts.index]
         values = [current_actual_usage, *masked_forecasts[model]]
         #fig.append_trace({'x':masked_forecasts.index, 'y':masked_forecasts[model]}, 1, 1)
-        fig.append_trace({'x':times, 'y':values}, 1, 1)
+        fig.append_trace({'x':times, 'y':values, 'name': model_names[model]}, row=1, col=1)#, secondary_y=True)
     
-    #TODO: if "previousday" not in config_toggles, deactivate "weather" switch?
     if ("weather" in config_toggles) and ("previousday" in config_toggles):
-        fig.append_trace({'x':mf2.index, 'y':mf2["outdoor_temp"]}, 1, 1)
+        fig.append_trace({'x':mf2.index, 'y':mf2["outdoor_temp"], 'name': 'Outdoor temperature'}, 1, 1)
 
     #if "baseline" in models:
     #    fig.append_trace({'x':masked_forecasts.index, 'y':masked_forecasts.baseline}, 1, 1)
