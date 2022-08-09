@@ -1,14 +1,14 @@
 /* restyle radio items */
 body {
   /*padding-top: 2em;*/
-  padding: 0px;
-  margin: 0px;
+  /*padding: 0px;*/
+  /*margin: 0px;*/
   /*background-color: rgba(169, 169, 169, 0.312);*/
   background-color: rgb(149, 184, 116);
 }
 
 .container {
-  margin: 0px;
+  /*margin: 0px;*/
   margin-top: 0px!;
 }
 
@@ -17,6 +17,18 @@ body {
   background-position: 1em center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: contain;
+}
+
+.TGCSG_long {
+  display: none;
+}
+@media screen and (min-width: 1500px) {
+  .TGCSG_short {
+    display: none;
+  }
+  .TGCSG_long {
+    display: inline;
+  }
 }
 
 H1 {
