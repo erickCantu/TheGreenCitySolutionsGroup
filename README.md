@@ -148,13 +148,13 @@ Jpyther notebooks are divided in two sections. Exploratory Data Analysis (EDA) a
 |TS 8 day predictions models |Description|
 |:---|:---|
 |[Base line](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_baseline.ipynb)|Previous 24 hrs energy demand value|
-|[Linear Regression](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/Regression.ipynb)||
-|[Polynomial Regression](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/Regression.ipynb)||
-|[SARIMAX](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_24h_sarimax.ipynb)||
+|[Linear Regression](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/Regression.ipynb)| Model with weather and time features |
+|[Polynomial Regression](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/Regression.ipynb)| Linear regression model with polynomial features including weather and time features |
+|[SARIMAX](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_24h_sarimax.ipynb)| Model with weather, yearly and weekly seasonalities as exogenous features. |
 |[Prophet](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_prophet.ipynb)|Model with hyperparameter optimization, holidays, weather data as additional reggressors and weekly seasonality by meteorological seasons|
 |[TBats](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_24h_tbats.ipynb)||
 |[XGBoost](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/TS_XGBoost.ipynb)|Model including weather features and time features. Net energy demand as target. Additionally a 24 hour time lag + 1,2,3 weeks time lag of the target feature is used.|
-|[Random Forest](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/ML.ipynb)||
+|[Random Forest](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/blob/main/notebooks/ML.ipynb)| Model including weather features and time features. Net energy demand as target. Additionally a 24 hour time lag and 1 week time lag of the target feature is used. |
 |||
 
 
