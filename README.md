@@ -140,7 +140,7 @@ The dashboard deployment can be accessed by running:
 cd dashboard
 python forecast_dashboard.py 
 ````
-and openning the link [http://127.0.0.1:8100/](http://127.0.0.1:8100/)
+and opening the link [http://127.0.0.1:8100/](http://127.0.0.1:8100/)
 
 ## __Files in the repo__ 
 Original data is available at [Citylearn v1.0.0 release](https://github.com/intelligent-environments-lab/CityLearn/releases/tag/v1.0.0). Preprocessed data for our analysis is located at the [preprocessed folder](https://github.com/eaunaicr97/TheGreenCitySolutionsGroup/tree/main/data/preprocessed).
@@ -174,7 +174,7 @@ Jpyther notebooks are divided in two sections. Exploratory Data Analysis (EDA) a
 
 
 ## __Future work__
-We have two approaches for our future work. A business approach and an Machine Learning optimization approach. 
+We have two approaches for our future work. A business approach and a Machine Learning optimization approach. 
 
 For our business oriented future work. We plan to implement a dashboard solution to predict real-time energy demand.  The solution will allow the stockholder to feed current data, helping them with their decisions to balance their energy demand.
 
