@@ -10,23 +10,6 @@ import sys
 sys.path.append("../notebooks/")
 from green_city.utils import datetime2index, index2datetime
 
-#dfs = {}
-#for i in range(1, 10):
-#    dfs[i] = (pd.read_csv(f"../data/preprocessed/Building_{i}.csv")
-#        .astype({"datetime": "datetime64"})
-#        .set_index("datetime")
-#    )
-#dfs['all'] = (pd.read_csv(f"../data/preprocessed/Agg_buildings.csv")
-#    .astype({"datetime": "datetime64"})
-#    .set_index("datetime")
-#)
-#
-#forecasts = {}
-#for model in ["linreg_poly", "random_forest", "xgboost", "xgboost_reduced_features"]:
-#    forecasts[model] = {}
-#    for i in [*list(range(1, 10)), "all"]:
-#        forecasts[model][i] = pd.read_pickle(f'../data/models/{model}_building_{i}.pkl')
-
 pred_indices = [32135, 33311, 26478, 33357, 30387, 30794, 31800, 28783]
 pred_times = [index2datetime(pi) for pi in pred_indices]
 pred_time_hours = [(d.strftime("%Y-%m-%d"), d.strftime("%H")) for d in pred_times]
