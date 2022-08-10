@@ -10,23 +10,6 @@ import sys
 sys.path.append("../notebooks/")
 from green_city.utils import datetime2index, index2datetime
 
-#dfs = {}
-#for i in range(1, 10):
-#    dfs[i] = (pd.read_csv(f"../data/preprocessed/Building_{i}.csv")
-#        .astype({"datetime": "datetime64"})
-#        .set_index("datetime")
-#    )
-#dfs['all'] = (pd.read_csv(f"../data/preprocessed/Agg_buildings.csv")
-#    .astype({"datetime": "datetime64"})
-#    .set_index("datetime")
-#)
-#
-#forecasts = {}
-#for model in ["linreg_poly", "random_forest", "xgboost", "xgboost_reduced_features"]:
-#    forecasts[model] = {}
-#    for i in [*list(range(1, 10)), "all"]:
-#        forecasts[model][i] = pd.read_pickle(f'../data/models/{model}_building_{i}.pkl')
-
 pred_indices = [32135, 33311, 26478, 33357, 30387, 30794, 31800, 28783]
 pred_times = [index2datetime(pi) for pi in pred_indices]
 pred_time_hours = [(d.strftime("%Y-%m-%d"), d.strftime("%H")) for d in pred_times]
@@ -75,16 +58,16 @@ checklist = html.Div(
         html.H3("Prediction models", style={"margin-top": "4.5em"}),
         dbc.Checklist(
             options=[
-                {"label": "Linear regression", "value": "linreg_poly", "disabled": False},
-                {"label": "SARIMAX", "value": "sarimax", "disabled": True},
-                {"label": "Prophet", "value": "prophet", "disabled": True},
-                {"label": "TBATS", "value": "tbats", "disabled": True},
-                {"label": "Random Forest", "value": "random_forest"},
+                #{"label": "SARIMAX", "value": "sarimax", "disabled": True},
+                #{"label": "Prophet", "value": "prophet", "disabled": True},
+                #{"label": "TBATS", "value": "tbats", "disabled": True},
                 {"label": "XGBoost", "value": "xgboost"},
                 {"label": "XGB (reduced features)", "value": "xgboost_reduced_features"},
+                {"label": "Random Forest", "value": "random_forest"},
+                {"label": "Linear regression", "value": "linreg_poly", "disabled": False},
                 {"label": "Baseline", "value": "baseline"},
             ],
-            value=["linreg_poly"],
+            value=[],
             id="model-selection",
         ),
     ]
@@ -95,11 +78,11 @@ switches = html.Div(
         html.H4("View options"),
         dbc.Checklist(
             options=[
-                {"label": "Display weather data", "value": "weather", "disabled": False},
+                #{"label": "Display weather data", "value": "weather", "disabled": False},
                 {"label": "Display actual data", "value": "actual"},
                 {"label": "Show previous day", "value": "previousday", "disabled": False},
             ],
-            value=[],
+            value=["actual"],
             id="config-toggles",
             switch=True,
             className="ml-3",
@@ -237,7 +220,42 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
     masked_forecasts = building_forecasts.loc[start_date+pd.Timedelta(hours=1):end_date]
     mf2 = building_forecasts.loc[day_before:start_date]
 
-    fig = px.line(x=masked_forecasts.index, y=[np.nan for _ in masked_forecasts.index], template="simple_white")
+    #fig = go.Figure()
+    fig = px.line(x=masked_forecasts.index, y=[np.nan for _ in masked_forecasts.index], template="simple_white",)
+    #              specs=[])
+    #fig = px.line(x=masked_forecasts.index, y=[np.nan for _ in masked_forecasts.index], template="simple_white",)
+    #              specs=[])
+    #fig.add_trace(go.Scatter(
+    #    x=masked_forecasts.index,
+    #    y=[np.nan for _ in masked_forecasts.index],
+    #    name="yaxis1 data",
+    #))
+    #fig = make_subplots(specs=[[{"secondary_y": True}]])
+    
+    #fig.update_layout(
+    #    yaxis=dict(
+    #        title="yaxis title",
+    #        titlefont=dict(
+    #            color="#1f77b4"
+    #        ),
+    #        tickfont=dict(
+    #            color="#1f77b4"
+    #        )
+    #    ),
+    #    yaxis2=dict(
+    #        title="yaxis2 title",
+    #        titlefont=dict(
+    #            color="#ff7f0e"
+    #        ),
+    #        tickfont=dict(
+    #            color="#ff7f0e"
+    #        ),
+    #        anchor="free",
+    #        overlaying="y",
+    #        side="left",
+    #        position=0.15
+    #    ),
+    #)
 
     actual_usage = building_forecasts["actual_usage"]
     current_actual_usage = actual_usage[start_date]
@@ -249,6 +267,7 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
              'mode': 'lines',
              'x': df_actual.index,
              'y': df_actual,
+             'name': 'Actual usage',
              'line': {
                 'color': 'black',
              }},
@@ -262,6 +281,7 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
              'mode': 'lines',
              'x': df_actual.index,
              'y': df_actual,
+             'name': 'Actual usage',
              'line': {
                 'color': 'black',
                 'dash': 'dash',
@@ -269,15 +289,33 @@ def display_graph(building_nr, selected_date, selected_time, models, config_togg
              row=1, col=1,
         )
 
+    {"label": "XGBoost", "value": "xgboost"},
+    {"label": "XGB (reduced features)", "value": "xgboost_reduced_features"},
+    {"label": "Random Forest", "value": "random_forest"},
+    {"label": "Linear regression", "value": "linreg_poly", "disabled": False},
+    {"label": "Baseline", "value": "baseline"},
+    model_names = {
+        "xgboost": "XGBoost",
+        "xgboost_reduced_features": "XGBoost (reduced features)",
+        "random_forest": "Random forest",
+        "linreg_poly": "Linear regression",
+        "baseline": "Baseline",
+    }
+    model_colors = {
+        "xgboost": "green",
+        "xgboost_reduced_features": "blue",
+        "random_forest": "red",
+        "linreg_poly": "gray",
+        "baseline": "orange",
+    }
     for model in models:
         times = [start_date, *masked_forecasts.index]
         values = [current_actual_usage, *masked_forecasts[model]]
         #fig.append_trace({'x':masked_forecasts.index, 'y':masked_forecasts[model]}, 1, 1)
-        fig.append_trace({'x':times, 'y':values}, 1, 1)
+        fig.append_trace({'x':times, 'y':values, 'name': model_names[model], 'line': {'color': model_colors[model]}}, row=1, col=1)#, secondary_y=True)
     
-    #TODO: if "previousday" not in config_toggles, deactivate "weather" switch?
-    if ("weather" in config_toggles) and ("previousday" in config_toggles):
-        fig.append_trace({'x':mf2.index, 'y':mf2["outdoor_temp"]}, 1, 1)
+    #if ("weather" in config_toggles) and ("previousday" in config_toggles):
+    #    fig.append_trace({'x':mf2.index, 'y':mf2["outdoor_temp"], 'name': 'Outdoor temperature', 'yaxis': 'yaxis2'}, 1, 1)
 
     #if "baseline" in models:
     #    fig.append_trace({'x':masked_forecasts.index, 'y':masked_forecasts.baseline}, 1, 1)
