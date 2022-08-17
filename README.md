@@ -93,7 +93,7 @@ The tree-based machine learning models (Random Forest and XGBoost) performed bet
 The tree-based machine learning models (Random forest and XGBoost) produced forecasts with the lowest mean absolute error compared to the observed data.
 
 ## __Dashboard__
-The dashboard can be used to present the models results and compare then the for any date in the test year (year 4 = 2022)
+The dashboard can be used to present the models results and compare then the for any date in the test year (year 4 = 2022). The dashboard can be found hosted here: [https://greendash.herokuapp.com/](https://greendash.herokuapp.com/)
 
 ![](images/dashboard.png)
 
